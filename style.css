@@ -1,0 +1,218 @@
+/* Nhúng font chữ cao cấp Inter giống giao diện ứng dụng hiện đại */
+@import url('https://googleapis.com');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #030303;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* Hệ thống tạo đốm sáng mờ ảo phía sau nền */
+.background-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.25;
+}
+
+.circle-1 {
+    top: -10%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: #2563eb; /* Đốm sáng xanh lam */
+}
+
+.circle-2 {
+    bottom: -10%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: #ff0050; /* Đốm sáng đỏ hồng thương hiệu TikTok */
+}
+
+/* Khối hộp chứa giao diện kính mờ (Glassmorphism Card) */
+.profile-card {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    width: 100%;
+    max-width: 480px;
+    border-radius: 24px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    animation: cardAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hiệu ứng ảnh đại diện phát sáng kèm tích xanh chứng nhận */
+.avatar-container {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 24px auto;
+}
+
+.avatar-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+    transition: transform 0.5s ease;
+}
+
+.avatar-container:hover img {
+    transform: rotate(5px) scale(1.05);
+}
+
+.verified-badge {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: #030303;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.verified-badge i {
+    color: #2563eb; /* Màu tích xanh chuẩn */
+    font-size: 18px;
+}
+
+/* Định dạng văn bản giới thiệu */
+.profile-info h1 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+}
+
+.profile-info .tagline {
+    font-size: 14px;
+    color: #aeaeae;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.profile-info .bio {
+    font-size: 14px;
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+
+/* Danh sách khối liên kết dạng danh sách nút phẳng */
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 32px;
+}
+
+.link-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 14px 20px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.link-icon {
+    width: 30px;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 18px;
+}
+
+.link-item span {
+    flex: 1;
+    text-align: left;
+}
+
+.arrow-icon {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+
+/* Hiệu ứng hover cho từng dòng cực kỳ mịn mượt */
+.link-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.link-item:hover .arrow-icon {
+    transform: translateX(4px);
+    color: #ffffff;
+}
+
+/* Đổi màu icon đặc trưng khi tương tác */
+.item-facebook:hover .link-icon { color: #1877F2; }
+.item-tiktok:hover .link-icon { color: #ff0050; }
+.item-email:hover .link-icon { color: #10b981; }
+.item-phone:hover .link-icon { color: #f59e0b; }
+
+/* Phần Footer */
+.profile-footer {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 20px;
+}
+
+/* Hoạt họa xuất hiện lúc tải trang */
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Tối ưu hóa mượt mà cho các màn hình điện thoại siêu nhỏ */
+@media (max-width: 480px) {
+    .profile-card {
+        padding: 30px 20px;
+    }
+}
